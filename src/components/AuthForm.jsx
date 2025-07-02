@@ -137,22 +137,22 @@ const AuthForm = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-rose-50 via-pink-50 via-purple-50 to-indigo-100 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-[hsl(var(--background))] p-4">
       <div className="w-full max-w-md">
-        <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-white/50 p-8 space-y-6 relative overflow-hidden">
+        <div className="bg-[hsl(var(--card))]/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-[hsl(var(--border))]/40 p-8 space-y-6 relative overflow-hidden">
           {/* Decorative background elements */}
-          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-200/30 to-purple-200/30 rounded-full -translate-y-16 translate-x-16"></div>
-          <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-blue-200/30 to-cyan-200/30 rounded-full translate-y-12 -translate-x-12"></div>
-          
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[hsl(var(--caterpillar-yellow))/20] rounded-full -translate-y-16 translate-x-16"></div>
+          <div className="absolute bottom-0 left-0 w-24 h-24 bg-[hsl(var(--caterpillar-yellow))/10] rounded-full translate-y-12 -translate-x-12"></div>
+
           {/* Header */}
           <div className="text-center space-y-3 relative z-10">
-            <div className="w-16 h-16 bg-gradient-to-br from-pink-300 via-purple-300 to-indigo-300 rounded-2xl mx-auto flex items-center justify-center mb-4 shadow-lg">
-              <User className="w-8 h-8 text-white" />
+            <div className="w-16 h-16 bg-[hsl(var(--caterpillar-yellow))] rounded-2xl mx-auto flex items-center justify-center mb-4 shadow-lg">
+              <User className="w-8 h-8 text-[hsl(var(--black))]" />
             </div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent">
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-[hsl(var(--caterpillar-yellow))] to-[hsl(var(--black))] bg-clip-text text-transparent">
               {isLogin ? 'Welcome back' : 'Join us today'}
             </h1>
-            <p className="text-slate-600">
+            <p className="text-[hsl(var(--foreground))/70]">
               {isLogin 
                 ? 'Sign in to your account to continue' 
                 : 'Create your account and start your journey'
@@ -165,19 +165,19 @@ const AuthForm = () => {
             {/* Name field - only for register */}
             {!isLogin && (
               <div className="space-y-2">
-                <label htmlFor="name" className="block text-sm font-medium text-slate-700">
+                <label htmlFor="name" className="block text-sm font-medium text-[hsl(var(--foreground))]">
                   Full Name
                 </label>
                 <div className="relative">
-                  <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-purple-400 w-5 h-5" />
+                  <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[hsl(var(--caterpillar-yellow))] w-5 h-5" />
                   <input
                     id="name"
                     name="name"
                     type="text"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className={`w-full pl-12 pr-4 py-4 border-2 rounded-2xl bg-gradient-to-r from-purple-50/50 to-pink-50/50 focus:from-purple-100/50 focus:to-pink-100/50 focus:ring-4 focus:ring-purple-200/50 focus:border-purple-300 transition-all duration-300 placeholder-slate-400 ${
-                      errors.name ? 'border-rose-300 bg-rose-50/50' : 'border-purple-200'
+                    className={`w-full pl-12 pr-4 py-4 border-2 rounded-2xl bg-[hsl(var(--background))/60] focus:bg-[hsl(var(--background))] focus:ring-4 focus:ring-[hsl(var(--caterpillar-yellow))/30] focus:border-[hsl(var(--caterpillar-yellow))] transition-all duration-300 placeholder-[hsl(var(--foreground)/.4)] ${
+                      errors.name ? 'border-rose-300 bg-rose-50/50' : 'border-[hsl(var(--caterpillar-yellow))]'
                     }`}
                     placeholder="Enter your full name"
                   />
@@ -191,19 +191,19 @@ const AuthForm = () => {
 
             {/* Email field */}
             <div className="space-y-2">
-              <label htmlFor="email" className="block text-sm font-medium text-slate-700">
+              <label htmlFor="email" className="block text-sm font-medium text-[hsl(var(--foreground))]">
                 Email Address
               </label>
               <div className="relative">
-                <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-400 w-5 h-5" />
+                <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[hsl(var(--caterpillar-yellow))] w-5 h-5" />
                 <input
                   id="email"
                   name="email"
                   type="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className={`w-full pl-12 pr-4 py-4 border-2 rounded-2xl bg-gradient-to-r from-blue-50/50 to-cyan-50/50 focus:from-blue-100/50 focus:to-cyan-100/50 focus:ring-4 focus:ring-blue-200/50 focus:border-blue-300 transition-all duration-300 placeholder-slate-400 ${
-                    errors.email ? 'border-rose-300 bg-rose-50/50' : 'border-blue-200'
+                  className={`w-full pl-12 pr-4 py-4 border-2 rounded-2xl bg-[hsl(var(--background))/60] focus:bg-[hsl(var(--background))] focus:ring-4 focus:ring-[hsl(var(--caterpillar-yellow))/30] focus:border-[hsl(var(--caterpillar-yellow))] transition-all duration-300 placeholder-[hsl(var(--foreground)/.4)] ${
+                    errors.email ? 'border-rose-300 bg-rose-50/50' : 'border-[hsl(var(--caterpillar-yellow))]'
                   }`}
                   placeholder="Enter your email"
                 />
@@ -216,26 +216,26 @@ const AuthForm = () => {
 
             {/* Password field */}
             <div className="space-y-2">
-              <label htmlFor="password" className="block text-sm font-medium text-slate-700">
+              <label htmlFor="password" className="block text-sm font-medium text-[hsl(var(--foreground))]">
                 Password
               </label>
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-emerald-400 w-5 h-5" />
+                <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[hsl(var(--caterpillar-yellow))] w-5 h-5" />
                 <input
                   id="password"
                   name="password"
                   type={showPassword ? 'text' : 'password'}
                   value={formData.password}
                   onChange={handleInputChange}
-                  className={`w-full pl-12 pr-14 py-4 border-2 rounded-2xl bg-gradient-to-r from-emerald-50/50 to-teal-50/50 focus:from-emerald-100/50 focus:to-teal-100/50 focus:ring-4 focus:ring-emerald-200/50 focus:border-emerald-300 transition-all duration-300 placeholder-slate-400 ${
-                    errors.password ? 'border-rose-300 bg-rose-50/50' : 'border-emerald-200'
+                  className={`w-full pl-12 pr-14 py-4 border-2 rounded-2xl bg-[hsl(var(--background))/60] focus:bg-[hsl(var(--background))] focus:ring-4 focus:ring-[hsl(var(--caterpillar-yellow))/30] focus:border-[hsl(var(--caterpillar-yellow))] transition-all duration-300 placeholder-[hsl(var(--foreground)/.4)] ${
+                    errors.password ? 'border-rose-300 bg-rose-50/50' : 'border-[hsl(var(--caterpillar-yellow))]'
                   }`}
                   placeholder="Enter your password"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-emerald-400 hover:text-emerald-600 transition-colors p-1 rounded-lg hover:bg-emerald-100/50"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[hsl(var(--caterpillar-yellow))] hover:text-[hsl(var(--black))] transition-colors p-1 rounded-lg hover:bg-[hsl(var(--caterpillar-yellow))/20]"
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
@@ -249,26 +249,26 @@ const AuthForm = () => {
             {/* Confirm Password field - only for register */}
             {!isLogin && (
               <div className="space-y-2">
-                <label htmlFor="confirmPassword" className="block text-sm font-medium text-slate-700">
+                <label htmlFor="confirmPassword" className="block text-sm font-medium text-[hsl(var(--foreground))]">
                   Confirm Password
                 </label>
                 <div className="relative">
-                  <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-amber-400 w-5 h-5" />
+                  <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[hsl(var(--caterpillar-yellow))] w-5 h-5" />
                   <input
                     id="confirmPassword"
                     name="confirmPassword"
                     type={showConfirmPassword ? 'text' : 'password'}
                     value={formData.confirmPassword}
                     onChange={handleInputChange}
-                    className={`w-full pl-12 pr-14 py-4 border-2 rounded-2xl bg-gradient-to-r from-amber-50/50 to-orange-50/50 focus:from-amber-100/50 focus:to-orange-100/50 focus:ring-4 focus:ring-amber-200/50 focus:border-amber-300 transition-all duration-300 placeholder-slate-400 ${
-                      errors.confirmPassword ? 'border-rose-300 bg-rose-50/50' : 'border-amber-200'
+                    className={`w-full pl-12 pr-14 py-4 border-2 rounded-2xl bg-[hsl(var(--background))/60] focus:bg-[hsl(var(--background))] focus:ring-4 focus:ring-[hsl(var(--caterpillar-yellow))/30] focus:border-[hsl(var(--caterpillar-yellow))] transition-all duration-300 placeholder-[hsl(var(--foreground)/.4)] ${
+                      errors.confirmPassword ? 'border-rose-300 bg-rose-50/50' : 'border-[hsl(var(--caterpillar-yellow))]'
                     }`}
                     placeholder="Confirm your password"
                   />
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-amber-400 hover:text-amber-600 transition-colors p-1 rounded-lg hover:bg-amber-100/50"
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[hsl(var(--caterpillar-yellow))] hover:text-[hsl(var(--black))] transition-colors p-1 rounded-lg hover:bg-[hsl(var(--caterpillar-yellow))/20]"
                   >
                     {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
@@ -286,7 +286,7 @@ const AuthForm = () => {
                 <button
                   type="button"
                   onClick={handleForgotPassword}
-                  className="text-sm text-purple-600 hover:text-purple-800 transition-colors font-medium hover:underline"
+                  className="text-sm text-[hsl(var(--caterpillar-yellow))] hover:text-[hsl(var(--black))] transition-colors font-medium hover:underline"
                 >
                   Forgot Password?
                 </button>
@@ -297,7 +297,7 @@ const AuthForm = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 hover:from-purple-600 hover:via-pink-600 hover:to-indigo-600 text-white py-4 px-6 rounded-2xl font-semibold shadow-xl hover:shadow-2xl focus:ring-4 focus:ring-purple-200/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 transform hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full bg-[hsl(var(--caterpillar-yellow))] hover:bg-[hsl(var(--black))] text-[hsl(var(--black))] hover:text-[hsl(var(--caterpillar-yellow))] py-4 px-6 rounded-2xl font-semibold shadow-xl hover:shadow-2xl focus:ring-4 focus:ring-[hsl(var(--caterpillar-yellow))/30] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 transform hover:scale-[1.02] active:scale-[0.98]"
             >
               {loading && <Loader2 className="w-5 h-5 animate-spin" />}
               <span className="text-lg">{loading ? 'Please wait...' : (isLogin ? 'Sign In' : 'Create Account')}</span>
@@ -305,12 +305,12 @@ const AuthForm = () => {
           </form>
 
           {/* Toggle Form */}
-          <div className="text-center pt-6 border-t border-gradient-to-r from-purple-200/30 via-pink-200/30 to-indigo-200/30 relative z-10">
-            <p className="text-slate-600">
+          <div className="text-center pt-6 border-t border-[hsl(var(--caterpillar-yellow))/30] relative z-10">
+            <p className="text-[hsl(var(--foreground))/70]">
               {isLogin ? "Don't have an account? " : "Already have an account? "}
               <button
                 onClick={toggleForm}
-                className="text-purple-600 hover:text-purple-800 font-semibold transition-colors hover:underline decoration-2 underline-offset-2"
+                className="text-[hsl(var(--caterpillar-yellow))] hover:text-[hsl(var(--black))] font-semibold transition-colors hover:underline decoration-2 underline-offset-2"
               >
                 {isLogin ? 'Sign up' : 'Sign in'}
               </button>
