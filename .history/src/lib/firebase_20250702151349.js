@@ -7,7 +7,7 @@ import {
   sendPasswordResetEmail,
   updateProfile
 } from 'firebase/auth';
-import { getDatabase, ref, set, get, child } from 'firebase/database';
+import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
 
 // Replace these config values with your actual Firebase project config
 const firebaseConfig = {
@@ -27,17 +27,17 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase Auth service
 export const auth = getAuth(app);
 
-// Initialize Realtime Database service
-export const db = getDatabase(app);
+// Initialize Firestore service
+export const db = getFirestore(app);
 
-// Sign up function (Realtime DB)
+// Sign up function
 export async function signUp(email, password, name, role) {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     // Update user profile with display name
     await updateProfile(userCredential.user, { displayName: name });
-    // Store user role in Realtime Database
-    await set(ref(db, 'users/' + userCredential.user.uid), {
+    // Store user role in Firestore
+    await setDoc(doc(db, 'users', userCredential.user.uid), {
       uid: userCredential.user.uid,
       email,
       name,
@@ -69,12 +69,12 @@ export async function resetPassword(email) {
   }
 }
 
-// Fetch user role by UID (Realtime DB)
+// Fetch user role by UID
 export async function getUserRole(uid) {
   try {
-    const snapshot = await get(child(ref(db), 'users/' + uid));
-    if (snapshot.exists()) {
-      return { role: snapshot.val().role, error: null };
+    const userDoc = await getDoc(doc(db, 'users', uid));
+    if (userDoc.exists()) {
+      return { role: userDoc.data().role, error: null };
     } else {
       return { role: null, error: 'User not found' };
     }

@@ -7,18 +7,16 @@ import {
   sendPasswordResetEmail,
   updateProfile
 } from 'firebase/auth';
-import { getDatabase, ref, set, get, child } from 'firebase/database';
 
 // Replace these config values with your actual Firebase project config
 const firebaseConfig = {
-  apiKey: "AIzaSyA0YHfbxhjcBL_jFbO3JSGfxcaYKJaVUio",
-  authDomain: "gesturedelhi-a90bf.firebaseapp.com",
-  databaseURL: "https://gesturedelhi-a90bf-default-rtdb.firebaseio.com",
-  projectId: "gesturedelhi-a90bf",
-  storageBucket: "gesturedelhi-a90bf.appspot.com",
-  messagingSenderId: "744554916020",
-  appId: "1:744554916020:web:dddb66a3da78883845cfe1",
-  measurementId: "G-GGWKNMQXB8"
+  apiKey: "AIzaSyCLkDpkMatZamcKgPiA4EMKJUfM_WwOLrY",
+  authDomain: "caterpillar-afb54.firebaseapp.com",
+  projectId: "caterpillar-afb54",
+  storageBucket: "caterpillar-afb54.appspot.com", // <-- Correct this!
+  messagingSenderId: "349071701043",
+  appId: "1:349071701043:web:1097db1b55c70f21b9df46",
+  measurementId: "G-R45JDQBDTC"
 };
 
 // Initialize Firebase app
@@ -27,22 +25,12 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase Auth service
 export const auth = getAuth(app);
 
-// Initialize Realtime Database service
-export const db = getDatabase(app);
-
-// Sign up function (Realtime DB)
-export async function signUp(email, password, name, role) {
+// Sign up function
+export async function signUp(email, password, name) {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     // Update user profile with display name
     await updateProfile(userCredential.user, { displayName: name });
-    // Store user role in Realtime Database
-    await set(ref(db, 'users/' + userCredential.user.uid), {
-      uid: userCredential.user.uid,
-      email,
-      name,
-      role
-    });
     return { user: userCredential.user, error: null };
   } catch (error) {
     return { user: null, error: error.message };
@@ -66,19 +54,5 @@ export async function resetPassword(email) {
     return { success: true, error: null };
   } catch (error) {
     return { success: false, error: error.message };
-  }
-}
-
-// Fetch user role by UID (Realtime DB)
-export async function getUserRole(uid) {
-  try {
-    const snapshot = await get(child(ref(db), 'users/' + uid));
-    if (snapshot.exists()) {
-      return { role: snapshot.val().role, error: null };
-    } else {
-      return { role: null, error: 'User not found' };
-    }
-  } catch (error) {
-    return { role: null, error: error.message };
   }
 }

@@ -1,4 +1,3 @@
-
 import AuthForm from '@/components/AuthForm';
 
 const Index = () => {
